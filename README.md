@@ -4,7 +4,7 @@ Personal photography portfolio website for Yasser Baouzil.
 
 Live site:
 
-https://xxxxxxxx15339.github.io/photography/
+https://xxxxxxxx15339.github.io/portfolio/
 
 ## Tech Stack
 
