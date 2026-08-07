@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Yourname</title>
+<meta name="description" content="About, contact, and selected clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="logotype" href="index.html">yourname<sup>™</sup></a>
+    <nav class="nav__items" aria-label="Main">
+      <a class="nav__link" href="index.html">(Index)</a>
+      <a class="nav__link" href="about.html" aria-current="page">(About)</a>
+      <a class="nav__link" href="playground.html">(Playground)</a>
+    </nav>
+    <span class="nav__clock" data-clock>00:00:00 (GMT)</span>
+    <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <svg data-icon-menu width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M4 9h24M4 16h24M4 23h24" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg data-icon-close width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none">
+        <path d="M7 7l18 18M25 7L7 25" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section container">
+    <h1 class="page-title">about</h1>
+
+    <div class="prose">
+      <p>
+        Replace this with your own words. Two or three short paragraphs is plenty —
+        what you shoot, how you work, and why. Resist the urge to write a CV.
+      </p>
+      <p>
+        The strongest photographer bios say one specific true thing rather than five
+        general ones. "I photograph the last hour of light in market towns" beats
+        "passionate about capturing moments."
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="section container">
+    <p class="section__label">Contact</p>
+    <div class="grid grid--3">
+      <div>
+        <p class="section__label">Email</p>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+      </div>
+      <div>
+        <p class="section__label">Instagram</p>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">@yourhandle</a>
+      </div>
+      <div>
+        <p class="section__label">Based in</p>
+        <span>Marrakesh, Morocco</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© <span id="year">2026</span> Yourname</span>
+    <span>Marrakesh, MA</span>
+    <a href="mailto:hello@example.com">hello@example.com</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

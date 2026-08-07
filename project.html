@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skate With Friends — Yourname</title>
+<meta name="description" content="Skate With Friends — editorial series, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="logotype" href="index.html">yourname<sup>™</sup></a>
+    <nav class="nav__items" aria-label="Main">
+      <a class="nav__link" href="index.html">(Index)</a>
+      <a class="nav__link" href="about.html">(About)</a>
+      <a class="nav__link" href="playground.html">(Playground)</a>
+    </nav>
+    <span class="nav__clock" data-clock>00:00:00 (GMT)</span>
+    <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <svg data-icon-menu width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M4 9h24M4 16h24M4 23h24" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg data-icon-close width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none">
+        <path d="M7 7l18 18M25 7L7 25" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section container">
+    <h1 class="page-title">skate with friends</h1>
+
+    <div class="grid grid--3">
+      <div>
+        <p class="section__label">Year</p>
+        <span>2026</span>
+      </div>
+      <div>
+        <p class="section__label">Category</p>
+        <span>Editorial</span>
+      </div>
+      <div>
+        <p class="section__label">Discipline</p>
+        <span>(Art Direction)(Photography)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <figure class="frame frame--wide" style="margin:0">
+      <img src="assets/img/placeholder-01.jpg" alt="Opening frame of the series" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="section container">
+    <div class="prose">
+      <p>
+        A short note on the series. What you were looking for, where it was shot,
+        what changed while you were making it.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="grid grid--2">
+      <figure class="frame frame--square" style="margin:0">
+        <img src="assets/img/placeholder-02.jpg" alt="" loading="lazy">
+      </figure>
+      <figure class="frame frame--square" style="margin:0">
+        <img src="assets/img/placeholder-03.jpg" alt="" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section container">
+    <hr class="rule">
+    <div class="index" style="margin-top:2rem">
+      <a class="index__row" href="project.html">
+        <span class="index__num">(2)</span>
+        <span class="index__title">Coastal Field Study</span>
+        <span class="index__category">Personal</span>
+        <span class="index__tags">(Photography)</span>
+        <span class="index__year">2025</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© <span id="year">2026</span> Yourname</span>
+    <a href="index.html">Back to index</a>
+    <a href="mailto:hello@example.com">hello@example.com</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

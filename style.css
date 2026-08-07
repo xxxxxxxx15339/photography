@@ -1,0 +1,479 @@
+/* ==========================================================================
+   Dasupply Template 01 — design system
+   Ported from the Figma component library.
+   Original design: Dasupply (dasupply.xyz). Free for personal + commercial use.
+   ========================================================================== */
+
+/* --- Tokens --------------------------------------------------------------
+   Values taken directly from the Figma "Design System" page.
+   Change these and the whole site follows.
+   ------------------------------------------------------------------------- */
+:root {
+  /* Colour — the design is strictly black and white. */
+  --bg: #ffffff;
+  --fg: #000000;
+  --fg-muted: rgba(0, 0, 0, 0.5);
+  --rule: rgba(0, 0, 0, 0.12);
+
+  /* Type families */
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Type scale — Figma: 315 / 64 / 24 / 18 / 14 / 12 */
+  --size-hero: clamp(3.5rem, 21vw, 19.6875rem); /* 56px → 315px */
+  --size-title: clamp(2rem, 7vw, 4rem);         /* → 64px  */
+  --size-lead: clamp(1.125rem, 2vw, 1.5rem);    /* → 24px  */
+  --size-body: 1.125rem;                        /* 18px    */
+  --size-meta: 0.875rem;                        /* 14px    */
+  --size-subtext: 0.75rem;                      /* 12px    */
+
+  --leading: 1.4; /* Figma line-height on every text style */
+
+  /* Layout — Figma desktop container is 1338px, mobile 355px */
+  --container: 1338px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* Rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7.5rem;
+}
+
+/* Invert any section by adding class="invert" — the index rows were
+   authored white-on-dark in Figma, so this keeps that option one word away. */
+.invert {
+  --bg: #000000;
+  --fg: #ffffff;
+  --fg-muted: rgba(255, 255, 255, 0.7);
+  --rule: rgba(255, 255, 255, 0.16);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* --- Reset ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Keyboard focus stays visible — mouse users never see it. */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* --- Layout --------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+  margin: 0;
+}
+
+/* --- Navbar --------------------------------------------------------------
+   Figma: 52px tall, logotype left, nav centre, clock right.
+   ------------------------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  gap: var(--space-sm);
+}
+
+.logotype {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-display);
+  font-size: 1.609rem; /* 25.75px */
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  line-height: 1;
+}
+
+.logotype sup {
+  font-size: 0.6em;
+  line-height: 1;
+}
+
+.nav__items {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav__link {
+  font-size: var(--size-meta);
+  font-weight: 500;
+  padding: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.nav__link:hover {
+  opacity: 0.5;
+}
+
+/* Active page: the parentheses close up, matching the Figma "Active" state. */
+.nav__link[aria-current="page"] {
+  opacity: 0.4;
+}
+
+.nav__clock {
+  font-size: var(--size-meta);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  min-width: 107px;
+  text-align: right;
+}
+
+.nav__toggle {
+  display: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.nav__toggle svg {
+  display: block;
+}
+
+/* --- Hero ----------------------------------------------------------------
+   The signature element: the wordmark set enormous, lowercase, in Instrument
+   Serif, sitting on its own with meta text tucked above it.
+   ------------------------------------------------------------------------- */
+.hero {
+  padding-block: var(--space-lg) var(--space-xl);
+}
+
+.hero__meta {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  max-width: 640px;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__index {
+  font-size: var(--size-body);
+  font-weight: 600;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.hero__statement {
+  margin: 0;
+  font-size: var(--size-meta);
+  font-weight: 400;
+  max-width: 42ch;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--size-hero);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+}
+
+/* --- Index table ---------------------------------------------------------
+   Figma "Index Cell": (n) · title · category · tags · year
+   Desktop = one row. Mobile = the stacked Variant2.
+   ------------------------------------------------------------------------- */
+.index__head {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 4rem;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  font-size: var(--size-subtext);
+  color: var(--fg-muted);
+  text-transform: capitalize;
+  letter-spacing: -0.01em;
+}
+
+.index__row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 4rem;
+  gap: var(--space-sm);
+  align-items: baseline;
+  padding-block: 1.125rem;
+  border-top: 1px solid var(--rule);
+  font-size: var(--size-body);
+  transition: opacity 0.25s ease;
+}
+
+.index__row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.index__num {
+  font-weight: 600;
+  color: var(--fg-muted);
+}
+
+.index__title {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.index__category,
+.index__year {
+  color: var(--fg-muted);
+}
+
+.index__tags {
+  color: var(--fg-muted);
+}
+
+.index__year {
+  font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hovering one row dims the others — the whole list reacts, not just the row. */
+@media (hover: hover) {
+  .index:hover .index__row {
+    opacity: 0.35;
+  }
+  .index:hover .index__row:hover {
+    opacity: 1;
+  }
+}
+
+/* --- Image frames --------------------------------------------------------
+   Figma ships fixed ratios: 16:9 and 1:1. Photos fill them, cropped.
+   ------------------------------------------------------------------------- */
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.frame--square {
+  aspect-ratio: 1 / 1;
+}
+
+.frame__caption {
+  margin-top: var(--space-xs);
+  font-size: var(--size-subtext);
+  color: var(--fg-muted);
+}
+
+/* --- Grids ---------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* --- Prose ---------------------------------------------------------------- */
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section__label {
+  font-size: var(--size-subtext);
+  color: var(--fg-muted);
+  margin-bottom: var(--space-md);
+  text-transform: capitalize;
+}
+
+.prose {
+  max-width: 58ch;
+  font-size: var(--size-lead);
+}
+
+.prose p {
+  margin: 0 0 1.2em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.page-title {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-display);
+  font-size: var(--size-title);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+}
+
+/* --- Footer --------------------------------------------------------------- */
+.footer {
+  padding-block: var(--space-lg);
+  border-top: 1px solid var(--rule);
+  font-size: var(--size-meta);
+  color: var(--fg-muted);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: space-between;
+}
+
+.footer a:hover {
+  color: var(--fg);
+}
+
+/* --- Mobile --------------------------------------------------------------
+   Figma mobile container is 355px; the index cell restacks.
+   ------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .nav__items,
+  .nav__clock {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  /* Open state, driven by main.js */
+  .nav--open .nav__items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 52px;
+    padding: var(--space-md) var(--gutter) var(--space-lg);
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Mobile nav items are set in the display face at 64px */
+  .nav--open .nav__link {
+    font-family: var(--font-display);
+    font-size: var(--size-title);
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+
+  .index__head {
+    display: none;
+  }
+
+  .index__row {
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0.5rem 0.75rem;
+    padding-block: var(--space-sm);
+  }
+
+  .index__num {
+    grid-column: 1;
+  }
+
+  .index__title {
+    grid-column: 2;
+  }
+
+  .index__year {
+    grid-column: 3;
+  }
+
+  .index__category,
+  .index__tags {
+    grid-column: 2 / -1;
+  }
+
+  .grid--2,
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__meta {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+/* --- Motion preferences --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
