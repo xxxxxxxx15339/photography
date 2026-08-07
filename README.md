@@ -1,63 +1,97 @@
-# Photography portfolio
+# Photography Portfolio
 
-A static portfolio site built from the [Dasupply Template 01](https://www.figma.com/community/file/1631797830423507153) Figma design system.
+Personal photography portfolio website for Yasser Baouzil.
 
-No build step, no dependencies, no framework. Four HTML files, one stylesheet, one small script.
+Live site:
 
-## Pages
+https://xxxxxxxx15339.github.io/photography/
 
-| File | What it is |
-|---|---|
-| `index.html` | Hero wordmark + project index table |
-| `project.html` | Template for a single series — duplicate per project |
-| `playground.html` | Loose grid for uncurated frames |
-| `about.html` | Bio and contact |
+## Tech Stack
 
-## Run it locally
+- Astro
+- TypeScript
+- Static site generation
+- GitHub Pages
+- GitHub Actions
 
-Open `index.html` in a browser. That's it. For a proper local server:
+## Purpose
+
+This website showcases selected photography work through a minimal, fast, image-focused portfolio.
+
+## Local Development
+
+Install dependencies:
 
 ```bash
-python3 -m http.server 8000
+npm install
+````
+
+Start the local dev server:
+
+```bash
+npm run dev
 ```
 
-Then visit `http://localhost:8000`.
+Build the site:
 
-## Make it yours
+```bash
+npm run build
+```
 
-1. **Name** — find and replace `yourname` and `Yourname` across all four HTML files.
-2. **Email** — replace `hello@example.com`.
-3. **Photos** — drop images into `assets/img/` and update the `src` attributes. The layout crops to fixed ratios (16:9 and 1:1), so upload generously sized files and let CSS handle the crop.
-4. **Projects** — each row in the index is one `<a class="index__row">` block. Copy, edit, renumber.
-5. **Alt text** — every `<img>` needs a real `alt` description. Decorative images can use `alt=""`, but photographs of things should say what they show.
+Preview the production build:
 
-### Design tokens
+```bash
+npm run preview
+```
 
-Everything visual is a CSS custom property at the top of `assets/css/style.css` — colours, type sizes, container width, spacing. Change them there rather than hunting through rules.
+## Deployment
 
-The index rows were drawn white-on-dark in Figma. Add `class="invert"` to any section to flip it.
+The site is deployed to GitHub Pages using GitHub Actions.
 
-## Deploy
+Production URL:
 
-### Vercel
-Import the repo at [vercel.com/new](https://vercel.com/new). Framework preset: **Other**. No build command, no output directory. Deploys on every push.
+```text
+https://xxxxxxxx15339.github.io/photography/
+```
 
-### Netlify
-Drag the folder onto [app.netlify.com/drop](https://app.netlify.com/drop), or connect the repo. Leave build settings empty.
+## Important Deployment Note
 
-### GitHub Pages
-Repo → Settings → Pages → Source: **Deploy from a branch** → `main` / `root`. Live at `https://<username>.github.io/<repo>/` in a minute or two.
+This is a GitHub Pages project site.
 
-## Fonts
+The Astro configuration must include:
 
-Instrument Serif (display) and Geist (body), both loaded from Google Fonts. Both are open source and free for commercial use. To self-host and drop the external request, download them and swap the `<link>` for an `@font-face` block.
+```js
+site: "https://xxxxxxxx15339.github.io",
+base: "/photography"
+```
 
-## Icons
+This ensures that links and assets work correctly under the `/photography/` path.
 
-The menu, close, and arrow icons are re-authored as inline SVG to keep the repo self-contained. To use the originals, select the icon in Figma → Export → SVG, and replace the inline markup.
+## Project Structure
 
-## Credit and licence
+```text
+src/
+├── components/
+├── content/
+├── layouts/
+├── pages/
+└── styles/
 
-Design system by [Dasupply](https://dasupply.xyz). Released free for personal and commercial use, with modification permitted and attribution optional. A fully developed version is sold at [dasupply.lemonsqueezy.com](https://dasupply.lemonsqueezy.com/).
+public/
+└── images/
+```
 
-This implementation is yours to do whatever you like with.
+## Image Guidelines
+
+Use optimized image files.
+
+Recommended versions:
+
+* thumbnail images for gallery grids
+* large images for detail or lightbox views
+
+Avoid committing full-resolution originals to the repository.
+
+## License
+
+All photographs are copyright Yasser Baouzil unless otherwise stated.

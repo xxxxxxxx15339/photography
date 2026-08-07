@@ -1,0 +1,42 @@
+---
+import PhotoCard from './PhotoCard.astro';
+
+interface PhotoItem {
+  src: string;
+  thumb?: string;
+  alt: string;
+  title?: string;
+  location?: string;
+  year?: number;
+  width?: number;
+  height?: number;
+  credit?: string;
+}
+
+interface Props {
+  photos: PhotoItem[];
+  heading?: string;
+}
+
+const { photos = [], heading = 'Gallery' } = Astro.props;
+---
+
+<section aria-label={heading}>
+  <ul class="gallery-grid" role="list">
+    {photos.map((photo) => (
+      <li>
+        <PhotoCard
+          src={photo.src}
+          thumb={photo.thumb}
+          alt={photo.alt}
+          title={photo.title}
+          location={photo.location}
+          year={photo.year}
+          width={photo.width}
+          height={photo.height}
+          credit={photo.credit}
+        />
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  src: string;
+  thumb?: string;
+  alt: string;
+  title?: string;
+  location?: string;
+  year?: number;
+  width?: number;
+  height?: number;
+  credit?: string;
+}
+
+const {
+  src,
+  thumb,
+  alt,
+  title,
+  location,
+  year,
+  width,
+  height,
+  credit
+} = Astro.props;
+
+const imageSrc = thumb ?? src;
+---
+
+<article class="photo-card">
+  <div class="photo-frame">
+    <a href={src} class="photo-card-link">
+      <img
+        src={imageSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  </div>
+  {(title || location || year || credit) && (
+    <div class="photo-meta">
+      {title && <p class="photo-title">{title}</p>}
+      {(location || year) && (
+        <p class="photo-details">
+          {location}{location && year ? ' · ' : ''}{year}
+        </p>
+      )}
+      {credit && <p class="photo-credit">By {credit}</p>}
+    </div>
+  )}
+</article>
+
+<style>
+  .photo-card {
+    padding: 1rem;
+  }
+
+  .photo-frame {
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+  }
+
+  .photo-card-link {
+    display: block;
+    max-width: 100%;
+  }
+
+  .photo-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .photo-credit {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>

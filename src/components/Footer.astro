@@ -1,0 +1,14 @@
+---
+const BASE = (() => {
+  const b = import.meta.env.BASE_URL || '/';
+  return b.endsWith('/') ? b : b + '/';
+})();
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p>© {year} Yasser Baouzil</p>
+  <p>
+    <a href={BASE}>Home</a>
+  </p>
+</footer>

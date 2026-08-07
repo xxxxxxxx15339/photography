@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pathname?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  pathname = Astro.url.pathname,
+  ogImage
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://xxxxxxxx15339.github.io');
+const canonical = new URL(pathname, site).toString();
+const defaultImage = new URL('favicon.svg', site).toString();
+const ogImageUrl = ogImage ? new URL(ogImage, site).toString() : defaultImage;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact | Yasser Baouzil Photography"
+  description="Contact Yasser Baouzil for collaborations, prints, and photography inquiries."
+>
+  <section class="stack">
+    <h1>Contact</h1>
+    <p class="contact-line">Email: <a href="mailto:baouzilyasser@gmail.com">baouzilyasser@gmail.com</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .contact-line a {
+    overflow-wrap: normal;
+  }
+</style>

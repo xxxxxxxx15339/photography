@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { galleries } from '../../data/galleries';
+
+export function getStaticPaths() {
+  return galleries.map((gallery) => ({
+    params: { slug: gallery.slug },
+    props: { gallery }
+  }));
+}
+
+const { gallery } = Astro.props;
+const BASE = (() => {
+  const b = import.meta.env.BASE_URL || '/';
+  return b.endsWith('/') ? b : b + '/';
+})();
+---
+
+<BaseLayout
+  title={`${gallery.title} | Yasser Baouzil Photography`}
+  description={gallery.description}
+>
+  <section class="stack">
+    <p><a href={`${BASE}galleries/`}>Back to galleries</a></p>
+    <h1>{gallery.title}</h1>
+    <p class="lede gallery-intro">{gallery.description}</p>
+    <GalleryGrid photos={gallery.photos} heading={gallery.title} />
+  </section>
+</BaseLayout>

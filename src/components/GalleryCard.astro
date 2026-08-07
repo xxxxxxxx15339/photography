@@ -1,0 +1,43 @@
+---
+interface GalleryCardPhoto {
+  src: string;
+  thumb: string;
+  alt: string;
+}
+
+interface GalleryCardData {
+  title: string;
+  slug: string;
+  description: string;
+  location?: string;
+  year?: number;
+  category?: string;
+  photos: GalleryCardPhoto[];
+}
+
+interface Props {
+  gallery: GalleryCardData;
+}
+
+const { gallery } = Astro.props;
+const BASE = (() => {
+  const b = import.meta.env.BASE_URL || '/';
+  return b.endsWith('/') ? b : b + '/';
+})();
+const galleryHref = `${BASE}galleries/${gallery.slug}/`;
+---
+
+<article class="gallery-card">
+  <a href={galleryHref} class="gallery-card-link">
+    <div class="gallery-card-copy">
+      <h3>{gallery.title}</h3>
+      <p class="gallery-card-meta">
+        {gallery.category}
+        {gallery.category && (gallery.location || gallery.year) ? ' · ' : ''}
+        {gallery.location}
+        {gallery.location && gallery.year ? ' · ' : ''}
+        {gallery.year}
+      </p>
+    </div>
+  </a>
+</article>
