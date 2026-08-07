@@ -51,7 +51,7 @@ The site is deployed to GitHub Pages using GitHub Actions.
 Production URL:
 
 ```text
-https://xxxxxxxx15339.github.io/photography/
+https://xxxxxxxx15339.github.io/portfolio/
 ```
 
 ## Important Deployment Note
@@ -62,7 +62,7 @@ The Astro configuration must include:
 
 ```js
 site: "https://xxxxxxxx15339.github.io",
-base: "/photography"
+base: "/portfolio"
 ```
 
 This ensures that links and assets work correctly under the `/photography/` path.
